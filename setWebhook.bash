@@ -1,0 +1,1 @@
+curl --request POST --url https://api.telegram.org/bot1892088875:AAHa7e4WZcpXCf8gqW0HXuR_H30YF-GFwJU/setWebhook --header 'content-type: application/json' --data '{"url": "https://ybci1kaqac.execute-api.us-east-1.amazonaws.com/dev/hello"}'
