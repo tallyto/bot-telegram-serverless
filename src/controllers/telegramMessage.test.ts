@@ -8,9 +8,9 @@ const makeSut = (): TelegramMessageController => {
 describe('Telegram Message Controller', () => {
   it('Deve receber uma mensagem e envia-la', async () => {
     const sut = makeSut()
-    const message = { text: 'teste', chat: { id: 1 } }
+    const event = { message: { text: 'teste', chat: { id: 1 } } }
     jest.spyOn(axios, 'get').mockResolvedValue({ data: 'ok' })
-    const result = await sut.handler(message)
+    const result = await sut.handler(event)
     expect(result).toBe('ok')
   })
 })

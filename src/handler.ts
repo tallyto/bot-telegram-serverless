@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 'use strict'
 import { TelegramMessageFactory } from './factory/telegramMessageFactory'
+import { internalServerError, success } from './helper/status-code'
 
 module.exports.hello = async (event: any) => {
   const data = JSON.parse(event.body)
@@ -12,13 +13,8 @@ module.exports.hello = async (event: any) => {
   try {
     const result = await messageFactory.handler(data)
     console.log('telegram result', result)
-    return {
-      statusCode: 200
-    }
+    return success()
   } catch (error) {
-    console.error(error)
-    return {
-      statusCode: 500
-    }
+    return internalServerError(error.message)
   }
 }
