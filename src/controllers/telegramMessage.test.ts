@@ -13,4 +13,12 @@ describe('Telegram Message Controller', () => {
     const result = await sut.handler(event)
     expect(result).toBe('ok')
   })
+
+  it('Deve receber uma mensagem editada e envia-la', async () => {
+    const sut = makeSut()
+    const event = { edited_message: { text: 'teste', chat: { id: 1 } } }
+    jest.spyOn(axios, 'get').mockResolvedValue({ data: 'ok' })
+    const result = await sut.handler(event)
+    expect(result).toBe('ok')
+  })
 })

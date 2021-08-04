@@ -17,8 +17,8 @@ plugins:
 
 functions:
   hello:
-    handler: src/handler.hello
+    handler: src/handler.webhook
     events:
       - http:
-          path: /hello
+          path: /webhook
           method: post

@@ -1,4 +1,4 @@
-interface StatusCode {
+export interface StatusCode {
   statusCode: number
   body?: string
 }

@@ -1,18 +1,12 @@
-/* eslint-disable @typescript-eslint/strict-boolean-expressions */
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
 'use strict'
 import { TelegramMessageFactory } from './factory/telegramMessageFactory'
-import { internalServerError, success } from './helper/status-code'
-
-module.exports.hello = async (event: any) => {
+import { internalServerError, StatusCode, success } from './helper/status-code'
+export const webhook = async (event: any): Promise<StatusCode> => {
   const data = JSON.parse(event.body)
-
-  console.log('telegram event', data)
+  console.log('event', data)
   const messageFactory = TelegramMessageFactory()
-
   try {
-    const result = await messageFactory.handler(data)
-    console.log('telegram result', result)
+    await messageFactory.handler(data)
     return success()
   } catch (error) {
     return internalServerError(error.message)
